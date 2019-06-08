@@ -52,14 +52,17 @@ pipeline {
     stage('Smoke-Test QA') {
       agent any
       steps {
-        //sample dummy step
+        //Smoke-Test QA
         sh 'sleep 2'
       }
     }
     stage('Deploy to Prod') {
       agent any
       steps {
-        sh 'sleep 5'
+        node {
+            notify("Deploy to production?")
+        }
+        input 'Deploy to production?'
         emailext body: 'Letting you know that a prod deploy happened', subject: '[Jenkins] Prod Deploy', to: 'me@aaronkraft.com'
       }
     }
