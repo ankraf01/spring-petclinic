@@ -42,11 +42,25 @@ pipeline {
         sh 'sleep 4'
       }
     }
-    stage('Another stage') {
+    stage('Deploy to QA') {
       agent any
       steps {
         //sample dummy step
         sh 'sleep 4'
+      }
+    }
+    stage('Smoke-Test QA') {
+      agent any
+      steps {
+        //sample dummy step
+        sh 'sleep 2'
+      }
+    }
+    stage('Deploy to Prod') {
+      agent any
+      steps {
+        //sample dummy step
+        sh 'sleep 5'
       }
     }
   }
