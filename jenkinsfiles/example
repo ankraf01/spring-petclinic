@@ -45,7 +45,7 @@ pipeline {
     stage('Deploy to QA') {
       agent any
       steps {
-        //sample dummy step
+        emailext body: 'Letting you know that a QA deploy happened', subject: '[Jenkins] QA Deploy', to: 'me@aaronkraft.com'
         sh 'sleep 4'
       }
     }
@@ -60,7 +60,7 @@ pipeline {
       agent any
       steps {
         sh 'sleep 5'
-        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: '', sendToIndividuals: true])
+        emailext body: 'Letting you know that a prod deploy happened', subject: '[Jenkins] Prod Deploy', to: 'me@aaronkraft.com'
       }
     }
   }
