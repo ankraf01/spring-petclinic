@@ -33,7 +33,6 @@ pipeline {
       steps {
         sh 'docker rm -f petclinic-tomcat-temp || true'
         sh "docker run -d -p 9966:8080 --name petclinic-tomcat-temp ${env.IMAGE}:${TAG}"
-        //notify 'Dev deployed!'
       }
     }
     stage('Smoke-Test Dev') {
@@ -46,10 +45,7 @@ pipeline {
     stage('Deploy to QA') {
       agent any
       steps {
-        //sh 'docker rm -f petclinic-tomcat-temp-qa || true'
-        //sh "docker run -d -p 9966:8081 --name petclinic-tomcat-temp-qa ${env.IMAGE}:${TAG}"
-        //emailext body: 'Letting you know that a QA deploy happened', subject: '[Jenkins] QA Deploy', to: 'me@aaronkraft.com'
-        //notify 'QA deployed!'
+        emailext body: 'Letting you know that a QA deploy happened', subject: '[Jenkins] QA Deploy', to: 'me@aaronkraft.com'
       }
     }
     stage('Smoke-Test QA') {
@@ -63,10 +59,7 @@ pipeline {
       agent any
       steps {
         input 'Deploy to Production?'
-        //sh 'docker rm -f petclinic-tomcat-temp-prod || true'
-        //sh "docker run -d -p 9966:8082 --name petclinic-tomcat-temp-prod ${env.IMAGE}:${TAG}"
         emailext body: 'Letting you know that a prod deploy happened', subject: '[Jenkins] Prod Deploy', to: 'me@aaronkraft.com'
-        //notify 'Production deployed!'
       }
     }
   }
