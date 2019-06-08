@@ -59,8 +59,8 @@ pipeline {
     stage('Deploy to Prod') {
       agent any
       steps {
-        //sample dummy step
         sh 'sleep 5'
+        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: '', sendToIndividuals: true])
       }
     }
   }
