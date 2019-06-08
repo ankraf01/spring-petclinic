@@ -55,6 +55,9 @@ pipeline {
         sh 'sleep 2'
       }
     }
+
+    input 'Deploy to Production?'
+
     stage('Deploy to Prod') {
       agent any
       steps {
