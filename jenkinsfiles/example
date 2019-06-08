@@ -46,7 +46,6 @@ pipeline {
       agent any
       steps {
         emailext body: 'Letting you know that a QA deploy happened', subject: '[Jenkins] QA Deploy', to: 'me@aaronkraft.com'
-        sh 'sleep 4'
       }
     }
     stage('Smoke-Test QA') {
@@ -59,10 +58,6 @@ pipeline {
     stage('Deploy to Prod') {
       agent any
       steps {
-        node {
-            notify("Deploy to production?")
-        }
-        input 'Deploy to production?'
         emailext body: 'Letting you know that a prod deploy happened', subject: '[Jenkins] Prod Deploy', to: 'me@aaronkraft.com'
       }
     }
