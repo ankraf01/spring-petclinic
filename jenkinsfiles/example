@@ -52,7 +52,7 @@ pipeline {
       agent any
       steps {
         //Smoke-Test QA
-        sh 'sleep 2'
+        sh 'sleep 3'
       }
     }
     stage('Deploy to Prod') {
