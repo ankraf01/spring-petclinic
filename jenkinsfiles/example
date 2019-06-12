@@ -39,21 +39,22 @@ pipeline {
     stage('Smoke-Test Dev') {
       agent any
       steps {
-        //sample dummy step
         sh 'sleep 4'
+        echo 'Completed Smoke-Test Dev'
       }
     }
     stage('Deploy to QA') {
       agent any
       steps {
         emailext body: 'Letting you know that a QA deploy happened', subject: '[Jenkins] QA Deploy', to: 'me@aaronkraft.com'
+        echo 'Completed Deploy to Dev'
       }
     }
     stage('Smoke-Test QA') {
       agent any
       steps {
-        //Smoke-Test QA
         sh 'sleep 3'
+        echo 'Completed Deploy to Dev'
       }
     }
     stage('Deploy to Prod') {
