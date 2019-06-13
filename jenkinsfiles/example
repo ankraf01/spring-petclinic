@@ -12,6 +12,12 @@ pipeline {
       agent any
       steps {
         sh 'mvn clean install'
+        echo 'restore artifacts as needed'
+		echo 'run unit tests'
+		echo 'check that code coverage is greater than 80%'
+		echo 'run integration tests'
+		echo 'run sonarqube for static code quality analysis'
+		echo 'run checkmarx for static code security analysis'
       }
     }
     stage('Package') {
