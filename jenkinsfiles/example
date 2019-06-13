@@ -31,6 +31,7 @@ pipeline {
             TAG = env.BRANCH_NAME
           }
           sh "docker build -t ${env.IMAGE}:${TAG} ."
+          echo 'drop build artifacts'
         }
       }
     }
