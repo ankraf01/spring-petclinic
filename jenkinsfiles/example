@@ -41,7 +41,7 @@ pipeline {
         sh 'docker rm -f petclinic-tomcat-temp || true'
         sh "docker run -d -p 9966:8080 --name petclinic-tomcat-temp ${env.IMAGE}:${TAG}"
         emailext body: 'Letting you know that a Dev deploy happened', subject: '[Jenkins] Dev Deploy', to: 'me@aaronkraft.com'
-        echo 'Completed Deploy to Dev'
+        echo 'Completed Deploy to Dev1'
       }
     }
     stage('Smoke-Test Dev') {
